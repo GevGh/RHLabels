@@ -14,6 +14,12 @@ typedef enum {
     RHBottom
 } RHDirection;
 
+typedef enum {
+    RHLabelCenter = 5,
+    RHLabelNotCenter = 7
+} RHLabelDirectionType;
+
+
 @interface RHNumberPointView ()
 
 @property (strong, nonatomic) UILabel *label1;
@@ -64,13 +70,16 @@ typedef enum {
         case RHTop:
             frame.origin.y = -frame.size.height;
             view.frame = frame;
+            view.tag = RHLabelNotCenter;
             break;
         case RHCenter:
             view.frame = frame;
+            view.tag = RHLabelCenter;
             break;
         case RHBottom:
             frame.origin.y = frame.size.height;
             view.frame = frame;
+            view.tag = RHLabelNotCenter;
             break;
         default:
             break;
@@ -152,21 +161,22 @@ typedef enum {
                      animations:^{
                          
                          [self changeViewDirection:labelCentre direction:moveUp ? RHTop : RHBottom];
-                         [self changeViewDirection:labelNotCentre direction:moveUp ? RHTop : RHBottom];
+                         [self changeViewDirection:labelNotCentre direction:RHCenter];
                      } completion:^(BOOL finished) {
                          completion();
                      }];
 }
 
 - (UILabel *)getLabelNotCentre {
-    if (self.label1.frame.origin.y != 0) {
+    
+    if (self.label1.tag == RHLabelNotCenter) {
         return self.label1;
     }
     return self.label2;
 }
 
 - (UILabel *)getLabelCentre {
-    if (self.label1.frame.origin.y == 0) {
+    if (self.label1.tag == RHLabelCenter) {
         return self.label1;
     }
     return self.label2;
