@@ -19,11 +19,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yDu-gO-7Zg" customClass="RHNumbersView">
-                                <rect key="frame" x="67.5" y="305.5" width="240" height="56"/>
+                                <rect key="frame" x="67.5" y="313.5" width="240" height="40"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="GzQ-QJ-aEH"/>
-                                    <constraint firstAttribute="height" constant="56" id="qm1-Eq-f63"/>
+                                    <constraint firstAttribute="height" constant="40" id="qm1-Eq-f63"/>
                                 </constraints>
                             </view>
                         </subviews>

@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class RHLabelConfig;
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface RHNumberPointView : UIView
@@ -16,6 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)animateToValue:(NSString *)toValue withTime:(NSTimeInterval )timeInterval;
 
 @property (nonatomic, readonly) double width;
+
+- (void)configChange:(RHLabelConfig *)config;
 
 @end
 

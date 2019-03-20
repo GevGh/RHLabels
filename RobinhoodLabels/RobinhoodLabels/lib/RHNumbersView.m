@@ -49,10 +49,6 @@
     self.animationDuration = 5;//by default 5 seconds
 }
 
-- (void)setFont:(UIFont *)font {
-    _font = font;
-}
-
 - (void)setText:(NSString *)text {
     _text = text;
     [self setup];
@@ -120,7 +116,7 @@
             pointView.text = character;
 
             pointView.frame = CGRectMake(xOrigin, 0, pointView.width, self.frame.size.height);
-            
+            [pointView configChange:self.config];
             [self addSubview:pointView];
             [self.points addObject:pointView];
         }

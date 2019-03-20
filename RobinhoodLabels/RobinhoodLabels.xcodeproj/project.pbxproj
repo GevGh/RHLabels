@@ -16,6 +16,7 @@
 		EF262E9E22397376004DD77C /* RHNumberPointView.m in Sources */ = {isa = PBXBuildFile; fileRef = EF262E9D22397376004DD77C /* RHNumberPointView.m */; };
 		EF262EA1223973C9004DD77C /* RHNumbersView.m in Sources */ = {isa = PBXBuildFile; fileRef = EF262EA0223973C9004DD77C /* RHNumbersView.m */; };
 		EFC7ACC4223ECBD600E2134F /* NSString+RHLabelEnumeration.m in Sources */ = {isa = PBXBuildFile; fileRef = EFC7ACC3223ECBD600E2134F /* NSString+RHLabelEnumeration.m */; };
+		EFDC0AA12242BA70006CD7BF /* RHLabelConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = EFDC0AA02242BA70006CD7BF /* RHLabelConfig.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,8 @@
 		EF262EA0223973C9004DD77C /* RHNumbersView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RHNumbersView.m; sourceTree = "<group>"; };
 		EFC7ACC2223ECBD600E2134F /* NSString+RHLabelEnumeration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+RHLabelEnumeration.h"; sourceTree = "<group>"; };
 		EFC7ACC3223ECBD600E2134F /* NSString+RHLabelEnumeration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+RHLabelEnumeration.m"; sourceTree = "<group>"; };
+		EFDC0A9F2242BA70006CD7BF /* RHLabelConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RHLabelConfig.h; sourceTree = "<group>"; };
+		EFDC0AA02242BA70006CD7BF /* RHLabelConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RHLabelConfig.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +85,8 @@
 				EF262EA0223973C9004DD77C /* RHNumbersView.m */,
 				EFC7ACC2223ECBD600E2134F /* NSString+RHLabelEnumeration.h */,
 				EFC7ACC3223ECBD600E2134F /* NSString+RHLabelEnumeration.m */,
+				EFDC0A9F2242BA70006CD7BF /* RHLabelConfig.h */,
+				EFDC0AA02242BA70006CD7BF /* RHLabelConfig.m */,
 			);
 			path = lib;
 			sourceTree = "<group>";
@@ -175,6 +180,7 @@
 				EFC7ACC4223ECBD600E2134F /* NSString+RHLabelEnumeration.m in Sources */,
 				EF262EA1223973C9004DD77C /* RHNumbersView.m in Sources */,
 				EF262E8922397271004DD77C /* ViewController.m in Sources */,
+				EFDC0AA12242BA70006CD7BF /* RHLabelConfig.m in Sources */,
 				EF262E9422397273004DD77C /* main.m in Sources */,
 				EF262E8622397271004DD77C /* AppDelegate.m in Sources */,
 				EF262E9E22397376004DD77C /* RHNumberPointView.m in Sources */,

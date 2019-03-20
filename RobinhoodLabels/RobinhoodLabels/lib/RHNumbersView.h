@@ -7,15 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RHLabelConfig.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface RHNumbersView : UIView
 
-@property (nonatomic) NSTimeInterval animationDuration;
-@property (strong, nonatomic) UIFont *font;
 @property (strong, nonatomic) NSString *text;
-@property (strong, nonatomic) UIColor *textColor;
+
+@property (nonatomic) NSTimeInterval animationDuration;
+@property (strong, nonatomic) RHLabelConfig *config;
 
 @end
 

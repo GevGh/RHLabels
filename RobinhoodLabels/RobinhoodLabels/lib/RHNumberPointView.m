@@ -7,6 +7,7 @@
 //
 
 #import "RHNumberPointView.h"
+#import "RHLabelConfig.h"
 
 typedef enum {
     RHTop,
@@ -31,16 +32,17 @@ typedef enum {
 
 @implementation RHNumberPointView
 
-- (instancetype)init
-{
+- (instancetype)init {
+    
     self = [super init];
     if (self) {
+        self.backgroundColor = [UIColor greenColor];
         
         self.label1 = [[UILabel alloc] init];
         self.label2 = [[UILabel alloc] init];
         
-        self.label1.backgroundColor = [UIColor redColor];
-        self.label2.backgroundColor = [UIColor yellowColor];
+//        self.label1.backgroundColor = [UIColor redColor];
+//        self.label2.backgroundColor = [UIColor yellowColor];
         
         self.label1.textAlignment = NSTextAlignmentCenter;
         self.label2.textAlignment = NSTextAlignmentCenter;
@@ -52,15 +54,35 @@ typedef enum {
     return self;
 }
 
-//- (void)layoutSubviews {
-//    [super layoutSubviews];
+- (void)configChange:(RHLabelConfig *)config {
+    
+    if (config.font) {
+        self.label1.font = config.font;
+        self.label2.font = config.font;
+    }
+    if (config.textColor) {
+        self.label1.textColor = config.textColor;
+        self.label2.textColor = config.textColor;
+    }
+}
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    self.label1.frame = CGRectMake(self.label1.frame.origin.x,
+                                   self.label1.frame.origin.y,
+                                   self.label1.frame.size.width,
+                                   self.frame.size.height);
+    self.label2.frame = CGRectMake(self.label2.frame.origin.x,
+                                   self.label2.frame.origin.y,
+                                   self.label2.frame.size.width,
+                                   self.frame.size.height);
 //    [self layout];
-//}
+}
 
 - (void)layout {
 
     [self changeViewDirection:self.label1 direction:RHCenter];
-    [self changeViewDirection:self.label2  direction:RHTop];
+    [self changeViewDirection:self.label2 direction:RHTop];
 }
 
 - (void)changeViewDirection:(UIView *)view direction:(RHDirection )direction {
@@ -88,17 +110,21 @@ typedef enum {
 
 - (void)animateToValue:(NSString *)toValue withTime:(NSTimeInterval )timeInterval {
     
-    NSUInteger initalValue = [self.text integerValue];
+    NSInteger initalValue = [self.text integerValue];
     NSInteger toValueInt = [toValue integerValue];
     NSLog(@"START");
-    NSLog(@"%i -> %i", initalValue, toValueInt);
+    NSLog(@"%lu -> %li", (long)initalValue, (long)toValueInt);
     if (initalValue == toValueInt) {
         return;
     }
     BOOL moveUp = initalValue < toValueInt ? YES : NO;
     
-    NSInteger change = abs(toValueInt - initalValue);
+    NSInteger change = labs(toValueInt - initalValue);
     NSTimeInterval deltaChange = timeInterval / change;
+    
+    NSLog(@"change %lu", (long)change);
+    NSLog(@"deltaChange %f", deltaChange);
+    
     [self recursiveAnimationWithDirection:moveUp
                                   toValue:toValueInt
                                  withTime:deltaChange
@@ -114,25 +140,25 @@ typedef enum {
     
     NSInteger currentValue = [self.text integerValue];
     NSInteger nextValue = moveUp ? currentValue + 1 : currentValue - 1;
-    NSLog(@"%i -> %i", currentValue, nextValue);
+    NSLog(@"%li -> %li", (long)currentValue, (long)nextValue);
     
-    if (toValue == nextValue) {
-        completion();
-        return;
-    }
+//    if (toValue == nextValue) {
+//        completion();
+//        return;
+//    }
     
     [self animateWithDirection:moveUp
                        toValue:@(nextValue)
                       withTime:timeInterval
                     completion:^{
-                        //                        if (currentValue == toValue) {
-                        //                            completion();
-                        //                        } else {
+                        if (nextValue == toValue) {
+                            completion();
+                            return;
+                        }
                         [self recursiveAnimationWithDirection:moveUp
                                                       toValue:toValue
                                                      withTime:timeInterval
                                                    completion:completion];
-                        //                        }
                     }];
 }
 
@@ -168,7 +194,6 @@ typedef enum {
 }
 
 - (UILabel *)getLabelNotCentre {
-    
     if (self.label1.tag == RHLabelNotCenter) {
         return self.label1;
     }
@@ -192,7 +217,9 @@ typedef enum {
 }
 
 - (double)width {
-    return [[self getLabelCentre] intrinsicContentSize].width;
+    double _width = [[self getLabelCentre] intrinsicContentSize].width;
+    NSLog(@"_width %f", _width);
+    return _width;
 }
 
 @end

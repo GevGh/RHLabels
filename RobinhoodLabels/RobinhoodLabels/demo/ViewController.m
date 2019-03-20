@@ -20,14 +20,20 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-    
+    [self setupRHLabels];
     [self changeText];
-    [NSTimer scheduledTimerWithTimeInterval:10
+    [NSTimer scheduledTimerWithTimeInterval:5
                                     repeats:YES
                                       block:^(NSTimer * _Nonnull timer) {
                                           
                                           [self changeText];
                                       }];
+}
+
+- (void)setupRHLabels {
+    
+    self.labelRobinhood.animationDuration = 3;
+    self.labelRobinhood.config = [RHLabelConfig defaultConfig];
 }
 
 - (void)changeText {
