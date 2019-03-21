@@ -26,9 +26,17 @@
                                     <constraint firstAttribute="height" constant="40" id="qm1-Eq-f63"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vtv-yi-cns">
+                                <rect key="frame" x="67.5" y="244.5" width="96.5" height="49"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="41"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="yDu-gO-7Zg" firstAttribute="top" secondItem="vtv-yi-cns" secondAttribute="bottom" constant="20" id="Gno-qB-cKe"/>
+                            <constraint firstItem="yDu-gO-7Zg" firstAttribute="leading" secondItem="vtv-yi-cns" secondAttribute="leading" id="M16-2S-Jv6"/>
                             <constraint firstItem="yDu-gO-7Zg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="PTs-Yf-0mD"/>
                             <constraint firstItem="yDu-gO-7Zg" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="giU-1W-fYi"/>
                         </constraints>
@@ -36,10 +44,12 @@
                     </view>
                     <connections>
                         <outlet property="labelRobinhood" destination="yDu-gO-7Zg" id="5aP-y0-zFJ"/>
+                        <outlet property="labelText" destination="vtv-yi-cns" id="f7J-fA-d8H"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="107.49625187406298"/>
         </scene>
     </scenes>
 </document>

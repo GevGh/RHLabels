@@ -12,6 +12,7 @@
 @interface ViewController ()
 
 @property (weak, nonatomic) IBOutlet RHNumbersView *labelRobinhood;
+@property (weak, nonatomic) IBOutlet UILabel *labelText;
 
 @end
 
@@ -32,13 +33,17 @@
 
 - (void)setupRHLabels {
     
-    self.labelRobinhood.animationDuration = 3;
+    self.labelRobinhood.animationDuration = 4;
     self.labelRobinhood.config = [RHLabelConfig defaultConfig];
+//    self.labelRobinhood.clipsToBounds = YES;
 }
 
 - (void)changeText {
     
-    NSNumber *n1 = [[NSNumber alloc]initWithInt:(arc4random() % 10)];
+    NSNumber *n1 = [[NSNumber alloc]initWithInt:(arc4random() % 8999) + 1000];
+    NSLog(@"changeText %@", [n1 stringValue]);
+    self.labelText.text = [n1 stringValue];
+    
     self.labelRobinhood.text = [n1 stringValue];
 }
 

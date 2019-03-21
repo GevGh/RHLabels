@@ -93,9 +93,6 @@
     [text enumerateCharactersUsingBlock:^(NSString * _Nonnull character, NSInteger idx) {
         
         
-        
-        
-        
         if (self.points.count >= length && self.points.count <= idx) {
 
             RHNumberPointView *pointView = self.points[idx];
@@ -107,16 +104,18 @@
         if (self.points.count > idx) { //need to animate
             
             RHNumberPointView *pointView = self.points[idx];
+            //CGFloat xOrigin = (superWidth / length) * idx;
+//            pointView.frame = CGRectMake(xOrigin, 0, pointView.width, self.frame.size.height);
             [pointView animateToValue:character withTime:self.animationDuration];
             return;
         } else { // self.points.count < idx // need to add new view
         
             RHNumberPointView *pointView = [[RHNumberPointView alloc] init];
-            CGFloat xOrigin = (superWidth / length) * idx;
             pointView.text = character;
 
-            pointView.frame = CGRectMake(xOrigin, 0, pointView.width, self.frame.size.height);
             [pointView configChange:self.config];
+            CGFloat xOrigin = pointView.width * idx;
+            pointView.frame = CGRectMake(xOrigin, 0, pointView.width, self.frame.size.height);
             [self addSubview:pointView];
             [self.points addObject:pointView];
         }

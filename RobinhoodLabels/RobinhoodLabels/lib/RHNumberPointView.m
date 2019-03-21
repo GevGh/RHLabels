@@ -59,6 +59,8 @@ typedef enum {
     if (config.font) {
         self.label1.font = config.font;
         self.label2.font = config.font;
+        [self.label1 sizeToFit];
+        [self.label2 sizeToFit];
     }
     if (config.textColor) {
         self.label1.textColor = config.textColor;
@@ -87,7 +89,7 @@ typedef enum {
 
 - (void)changeViewDirection:(UIView *)view direction:(RHDirection )direction {
     
-    CGRect frame = self.frame;
+    CGRect frame = self.bounds;
     switch (direction) {
         case RHTop:
             frame.origin.y = -frame.size.height;
@@ -109,7 +111,8 @@ typedef enum {
 }
 
 - (void)animateToValue:(NSString *)toValue withTime:(NSTimeInterval )timeInterval {
-    
+    NSDate *methodStart = [NSDate date];
+
     NSInteger initalValue = [self.text integerValue];
     NSInteger toValueInt = [toValue integerValue];
     NSLog(@"START");
@@ -129,6 +132,7 @@ typedef enum {
                                   toValue:toValueInt
                                  withTime:deltaChange
                                completion:^{
+                                   NSLog(@"executionTime = %f", [[NSDate date] timeIntervalSinceDate:methodStart]);
                                    NSLog(@"FINISH");
                                }];
 }
@@ -185,7 +189,7 @@ typedef enum {
                           delay:0
                         options:UIViewAnimationOptionTransitionNone
                      animations:^{
-                         
+    
                          [self changeViewDirection:labelCentre direction:moveUp ? RHTop : RHBottom];
                          [self changeViewDirection:labelNotCentre direction:RHCenter];
                      } completion:^(BOOL finished) {
