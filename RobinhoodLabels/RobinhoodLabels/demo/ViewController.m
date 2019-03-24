@@ -23,7 +23,7 @@
     [super viewDidLoad];
     [self setupRHLabels];
     [self changeText];
-    [NSTimer scheduledTimerWithTimeInterval:5
+    [NSTimer scheduledTimerWithTimeInterval:4
                                     repeats:YES
                                       block:^(NSTimer * _Nonnull timer) {
                                           
@@ -33,9 +33,8 @@
 
 - (void)setupRHLabels {
     
-    self.labelRobinhood.animationDuration = 4;
+    self.labelRobinhood.animationDuration = 2;
     self.labelRobinhood.config = [RHLabelConfig defaultConfig];
-//    self.labelRobinhood.clipsToBounds = YES;
 }
 
 - (void)changeText {

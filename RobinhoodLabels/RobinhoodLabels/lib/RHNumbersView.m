@@ -46,6 +46,7 @@
 
 - (void)initalSetup {
     
+    self.clipsToBounds = YES;
     self.animationDuration = 5;//by default 5 seconds
 }
 
@@ -110,16 +111,24 @@
             return;
         } else { // self.points.count < idx // need to add new view
         
-            RHNumberPointView *pointView = [[RHNumberPointView alloc] init];
+            RHNumberPointView *pointView = [[RHNumberPointView alloc] initWithFrame:CGRectMake(0, 0, self.fontWidth, self.frame.size.height)];
+            
             pointView.text = character;
-
+            
             [pointView configChange:self.config];
-            CGFloat xOrigin = pointView.width * idx;
-            pointView.frame = CGRectMake(xOrigin, 0, pointView.width, self.frame.size.height);
+            CGFloat xOrigin = (self.fontWidth + 0) * idx;
+            pointView.frame = CGRectMake(xOrigin, 0, self.fontWidth, self.frame.size.height);
             [self addSubview:pointView];
             [self.points addObject:pointView];
         }
     }];
+}
+
+- (double)fontWidth {
+    
+    UIFont *font = self.config.font;
+    NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:font, NSFontAttributeName, nil];
+    return [[[NSAttributedString alloc] initWithString:@"8" attributes:attributes] size].width;
 }
 
 @end

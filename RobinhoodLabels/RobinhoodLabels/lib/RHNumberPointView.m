@@ -36,22 +36,36 @@ typedef enum {
     
     self = [super init];
     if (self) {
-        self.backgroundColor = [UIColor greenColor];
-        
-        self.label1 = [[UILabel alloc] init];
-        self.label2 = [[UILabel alloc] init];
-        
-//        self.label1.backgroundColor = [UIColor redColor];
-//        self.label2.backgroundColor = [UIColor yellowColor];
-        
-        self.label1.textAlignment = NSTextAlignmentCenter;
-        self.label2.textAlignment = NSTextAlignmentCenter;
-
-        [self addSubview:self.label1];
-        [self addSubview:self.label2];
-        [self layout];
+        [self initilaze];
     }
     return self;
+}
+
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self initilaze];
+    }
+    return self;
+}
+
+- (void)initilaze {
+    
+//    self.backgroundColor = [UIColor greenColor];
+    
+    self.label1 = [[UILabel alloc] init];
+    self.label2 = [[UILabel alloc] init];
+    
+//    self.label1.backgroundColor = [UIColor redColor];
+//    self.label2.backgroundColor = [UIColor yellowColor];
+    
+    self.label1.textAlignment = NSTextAlignmentCenter;
+    self.label2.textAlignment = NSTextAlignmentCenter;
+    
+    [self addSubview:self.label1];
+    [self addSubview:self.label2];
+    [self layout];
 }
 
 - (void)configChange:(RHLabelConfig *)config {
@@ -59,8 +73,9 @@ typedef enum {
     if (config.font) {
         self.label1.font = config.font;
         self.label2.font = config.font;
-        [self.label1 sizeToFit];
-        [self.label2 sizeToFit];
+//        [self.label1 sizeToFit];
+//        [self.label2 sizeToFit];
+        [self layoutIfNeeded];
     }
     if (config.textColor) {
         self.label1.textColor = config.textColor;
@@ -72,11 +87,11 @@ typedef enum {
     [super layoutSubviews];
     self.label1.frame = CGRectMake(self.label1.frame.origin.x,
                                    self.label1.frame.origin.y,
-                                   self.label1.frame.size.width,
+                                   self.frame.size.width,
                                    self.frame.size.height);
     self.label2.frame = CGRectMake(self.label2.frame.origin.x,
                                    self.label2.frame.origin.y,
-                                   self.label2.frame.size.width,
+                                   self.frame.size.width,
                                    self.frame.size.height);
 //    [self layout];
 }
@@ -146,11 +161,6 @@ typedef enum {
     NSInteger nextValue = moveUp ? currentValue + 1 : currentValue - 1;
     NSLog(@"%li -> %li", (long)currentValue, (long)nextValue);
     
-//    if (toValue == nextValue) {
-//        completion();
-//        return;
-//    }
-    
     [self animateWithDirection:moveUp
                        toValue:@(nextValue)
                       withTime:timeInterval
@@ -217,13 +227,7 @@ typedef enum {
     [self layout];
     UILabel *labelCentre = [self getLabelCentre];
     labelCentre.text = text;
-    [labelCentre sizeToFit];
-}
-
-- (double)width {
-    double _width = [[self getLabelCentre] intrinsicContentSize].width;
-    NSLog(@"_width %f", _width);
-    return _width;
+//    [labelCentre sizeToFit];
 }
 
 @end

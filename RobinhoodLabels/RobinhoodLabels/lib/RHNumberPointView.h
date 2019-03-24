@@ -17,8 +17,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSString *text;
 - (void)animateToValue:(NSString *)toValue withTime:(NSTimeInterval )timeInterval;
 
-@property (nonatomic, readonly) double width;
-
 - (void)configChange:(RHLabelConfig *)config;
 
 @end
